@@ -1,5 +1,13 @@
 #!/bin/bash -xe
 
+#use CMSSW-el7
+if [ "${SINGULARITY_NAME}" != "el7:x86_64" ]; then 
+echo "Entering cmssw-el7..." 
+exec cmssw-el7 --command-to-run "/bin/bash" "$0" "$@" 
+fi 
+echo "Now in cmssw-el7!" 
+echo "Command line: $0 $*"
+
 INPUTFILES=$1
 ISTRAIN=$2
 if ! [ -z "$3" ]; then
@@ -22,7 +30,7 @@ bash install_onnxruntime.sh
 rm -f install_onnxruntime.sh
 
 # clone this repo into "DeepNTuples" directory
-git clone https://github.com/colizz/DNNTuples.git DeepNTuples -b v8
+git clone git@github.com:hypnotismer/DNNTuples.git DeepNTuples -b dev-UL-hww
 
 scram b -j8
 
@@ -51,7 +59,7 @@ IFS=',' read -ra ADDR <<< "$INPUTFILES"
 idx=0
 for infile in "${ADDR[@]}"; do
   echo $infile $idx
-  retry cmsRun DeepNtuplizerAK15.py inputFiles=${infile} isTrainSample=${ISTRAIN}
+  retry cmsRun DeepNtuplizerAK15.py inputFiles=${infile} isTrainSample=${ISTRAIN} keepAllEvents=0 isTTBarSample=1
   mv output.root dnntuple_raw${idx}.root
   idx=$(($idx+1))
 done

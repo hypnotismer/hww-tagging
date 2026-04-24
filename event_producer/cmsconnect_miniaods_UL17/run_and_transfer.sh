@@ -13,9 +13,9 @@
 
 sleep $(( ( RANDOM % 200 ) + 1 ))
 
-wget --tries=3 https://github.com/colizz/hww-tagging/archive/refs/heads/dev-miniaods.tar.gz
-tar xaf dev-miniaods.tar.gz
-mv hww-tagging-dev-miniaods/event_producer/cmsconnect_miniaods_UL17/{inputs,fragments} .
+wget --tries=3 https://github.com/hypnotismer/hww-tagging/archive/refs/heads/xggg-tagging.tar.gz
+tar xaf xggg-tagging.tar.gz
+mv hww-tagging-xggg-tagging/event_producer/cmsconnect_miniaods_UL17/{inputs,fragments} .
 # rsync -a /afs/cern.ch/user/c/coli/work/hww/hww-tagging-minis/event_producer/cmsconnect_miniaods_UL17/{inputs,fragments} . # test-only
 
 xrdcp root://cmseos.fnal.gov//store/user/lpcdihiggsboost/MINIAOD/ParTSamples/MG5_aMC_v2.6.5.tar.gz inputs/MG5_aMC_v2.6.5.tar.gz

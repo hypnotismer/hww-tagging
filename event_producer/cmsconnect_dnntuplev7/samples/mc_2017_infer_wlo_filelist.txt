@@ -1,0 +1,8 @@
+root://xrootd-cms.infn.it//store/mc/RunIISummer20UL17MiniAODv2/BulkGravToWWToWhadWhad_narrow_M-1000_TuneCP5_13TeV-madgraph-pythia/MINIAODSIM/106X_mc2017_realistic_v9-v2/260000/F1F668E3-CB4A-ED4E-9493-3485628D5059.root
+root://xrootd-cms.infn.it//store/mc/RunIISummer20UL17MiniAODv2/BulkGravToWWToWhadWhad_narrow_M-1000_TuneCP5_13TeV-madgraph-pythia/MINIAODSIM/106X_mc2017_realistic_v9-v2/110000/6D88C005-5D83-6E43-BB62-CED3581FA0D3.root
+root://xrootd-cms.infn.it//store/mc/RunIISummer20UL17MiniAODv2/BulkGravToWWToWhadWhad_narrow_M-1000_TuneCP5_13TeV-madgraph-pythia/MINIAODSIM/106X_mc2017_realistic_v9-v2/110000/BC574354-722A-764E-B531-D3C0C5B42260.root
+root://xrootd-cms.infn.it//store/mc/RunIISummer20UL17MiniAODv2/BulkGravToWWToWhadWhad_narrow_M-1000_TuneCP5_13TeV-madgraph-pythia/MINIAODSIM/106X_mc2017_realistic_v9-v2/110000/A037AF36-0185-1641-A293-179F024B7ACD.root
+root://xrootd-cms.infn.it//store/mc/RunIISummer20UL17MiniAODv2/BulkGravToWWToWhadWhad_narrow_M-1000_TuneCP5_13TeV-madgraph-pythia/MINIAODSIM/106X_mc2017_realistic_v9-v2/110000/8BF75D2C-2F5D-5C49-9333-33FB385ECC2E.root
+root://xrootd-cms.infn.it//store/mc/RunIISummer20UL17MiniAODv2/BulkGravToWWToWhadWhad_narrow_M-1000_TuneCP5_13TeV-madgraph-pythia/MINIAODSIM/106X_mc2017_realistic_v9-v2/230000/BEAD775F-4C7D-A44D-BED2-C41388A13E73.root
+root://xrootd-cms.infn.it//store/mc/RunIISummer20UL17MiniAODv2/BulkGravToWWToWhadWhad_narrow_M-1000_TuneCP5_13TeV-madgraph-pythia/MINIAODSIM/106X_mc2017_realistic_v9-v2/230000/8919355B-AE00-D945-834B-D6E7BDC67BF8.root
+root://xrootd-cms.infn.it//store/mc/RunIISummer20UL17MiniAODv2/BulkGravToWWToWhadWhad_narrow_M-1000_TuneCP5_13TeV-madgraph-pythia/MINIAODSIM/106X_mc2017_realistic_v9-v2/230000/A1C70D70-4692-2243-9211-7922AB92C8A4.root

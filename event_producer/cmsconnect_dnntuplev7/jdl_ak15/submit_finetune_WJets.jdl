@@ -1,0 +1,29 @@
+Universe   = vanilla
+Executable = run_dnntuples_ak15.sh
+
++ProjectName="cms.org.cern"
+
+X509UP = x509up
+PROCABBR = WJets
+PROCNAME = WJetsToLNu_Pt-100To250_MatchEWPDG20_TuneCP5_13TeV-amcatnloFXFX-pythia8
+ISTRAIN  = 0
+EOSPATH = root://cceos.ihep.ac.cn//eos/ihep/cms/store/user/zkou/dnntuples/v7plus_ak15/$(PROCNAME)_infer/dnnTuples_$(Cluster)-$(Process)_inference.root
+
+Arguments = $(Infiles) $(ISTRAIN) $(EOSPATH)
+
+request_cpus = 1
+request_memory = 1024
+x509userproxy = $(X509UP)
+
++JobFlavour = "tomorrow"
+
+Log        = log/job.log_$(Cluster)
+Output     = log/job.out_$(Cluster)-$(Process)
+Error      = log/job.err_$(Cluster)-$(Process)
+
+should_transfer_files   = YES
+when_to_transfer_output = ON_EXIT_OR_EVICT
+transfer_output_files   = dummy.cc
+
+
+Queue Infiles from samples/mc_2018_$(PROCABBR)_100_filelist.txt

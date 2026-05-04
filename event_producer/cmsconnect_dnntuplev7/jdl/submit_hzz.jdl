@@ -1,0 +1,29 @@
+Universe   = vanilla
+Executable = run_dnntuples.sh
+
++ProjectName="cms.org.cern"
+
+PROCABBR = hzz
+PROCNAME = BulkGravitonToHHTo4Z_MX-600to6000_MH-15to250_JHUVariableZMass
+ISTRAIN  = 1
+
+Arguments = $(Infiles) $(ISTRAIN)
+
+requirements = (OpSysAndVer =?= "CentOS7")
+request_cpus = 1
+request_memory = 1024
+use_x509userproxy = true
+
++JobFlavour = "tomorrow"
+
+Log        = log/job.log_$(Cluster)
+Output     = log/job.out_$(Cluster)-$(Process)
+Error      = log/job.err_$(Cluster)-$(Process)
+
+should_transfer_files   = YES
+when_to_transfer_output = ON_EXIT_OR_EVICT
+transfer_output_files   = dnntuple.root
+transfer_output_remaps  = "dnntuple.root = output/$(PROCNAME)/dnntuple_$(Cluster)-$(Process).root"
+
+
+Queue Infiles from samples/mc_2017_$(PROCABBR)_filelist.txt

@@ -1,28 +1,29 @@
 Universe   = vanilla
-Executable = run_and_transfer.sh
+Executable = /bin/bash
 
 +ProjectName="cms.org.cern"
+
+WRAPPER = /afs/cern.ch/user/z/zkou/DNNTuples/hww-tagging/event_producer/cmsconnect_miniaods_UL17/jdl/x509run
+X509UP = /afs/cern.ch/user/z/zkou/DNNTuples/hww-tagging/event_producer/cmsconnect_miniaods_UL17/jdl/x509up
+PROG = /afs/cern.ch/user/z/zkou/DNNTuples/hww-tagging/event_producer/cmsconnect_miniaods_UL17/run_and_transfer.sh
 
 # custom args
 NEVENT = 500
 NTHREAD = 1
 PROCNAME = BulkGravitonToHHTo6Glu_MX-600to6000_MH-15to250
-EOSPATH = root://cceos.ihep.ac.cn:1094/store/user/zkou/sfTuples/$(PROCNAME)/20UL17MiniAODv2/miniv2_$(Cluster)-$(Process).root
+EOSPATH = root://cceos.ihep.ac.cn:1094//store/user/zkou/sfTuples/$(PROCNAME)/20UL17MiniAODv2/miniv2_$(Cluster)-$(Process).root
 # this dictates how often the config will change (i.e., how often different H, X masses are sampled)
 NEVENTLUMIBLOCK = 100
 
 # note: reserve a disjoint seed block for this sample
-BEGINSEED = 600000
+BEGINSEED = 600003
 
-Arguments = $(JOBNUM) $(NEVENT) $(NEVENTLUMIBLOCK) $(NTHREAD) $(PROCNAME) $(BEGINSEED) $(EOSPATH) $(LHEPRODSCRIPT)
+Arguments = x509run x509up ./run_and_transfer.sh $(JOBNUM) $(NEVENT) $(NEVENTLUMIBLOCK) $(NTHREAD) $(PROCNAME) $(BEGINSEED) $(EOSPATH)
 
-# since Sept 2024: should use cc7 container for this job
-# requirements = (OpSysAndVer =?= "CentOS7")
-Requirements = HAS_SINGULARITY == True
-+SingularityImage = "/cvmfs/unpacked.cern.ch/registry.hub.docker.com/cmssw/cc7:x86_64"
 request_cpus = 1
 request_memory = 2000
-use_x509userproxy = true
+use_x509userproxy = True
+x509userproxy = $(X509UP)
 
 +JobFlavour = "tomorrow"
 
@@ -32,6 +33,7 @@ Error      = log/job.err_$(Cluster)-$(Process)
 
 should_transfer_files   = YES
 when_to_transfer_output = ON_EXIT_OR_EVICT
+transfer_input_files    = $(WRAPPER), $(X509UP), $(PROG)
 transfer_output_files   = dummy.cc
 
 # same mass-point granularity as the other low-mass granular HH trainings

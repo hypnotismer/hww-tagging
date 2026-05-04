@@ -10,14 +10,16 @@ PROG = /afs/cern.ch/user/z/zkou/DNNTuples/hww-tagging/event_producer/cmsconnect_
 # custom args
 NEVENT = 500
 NTHREAD = 1
-PROCNAME = BulkGravitonToHHTo6Glu_MX-Var_MH-260to650
-EOSPATH = root://cceos.ihep.ac.cn:1094//store/user/zkou/sfTuples/$(PROCNAME)/20UL17MiniAODv2/miniv2_$(Cluster)-$(Process).root
+PROCNAME = BulkGravitonToHHTo6Glu_MX-600to6000_MH-15to250
+# Resubmit uses the new real Condor $(Cluster), but preserves the original missing ProcId in the filename suffix.
+EOSPATH = root://cceos.ihep.ac.cn:1094//store/user/zkou/sfTuples/$(PROCNAME)/20UL17MiniAODv2/miniv2_$(Cluster)-$(OUTPROC).root
 # this dictates how often the config will change (i.e., how often different H, X masses are sampled)
-NEVENTLUMIBLOCK = 50
+NEVENTLUMIBLOCK = 100
 
 # note: reserve a disjoint seed block for this sample
-BEGINSEED = 632000
+BEGINSEED = 600003
 
+# JOBNUM is original missing ProcId + 1, so the seed is identical to the missing original job.
 Arguments = x509run x509up ./run_and_transfer.sh $(JOBNUM) $(NEVENT) $(NEVENTLUMIBLOCK) $(NTHREAD) $(PROCNAME) $(BEGINSEED) $(EOSPATH)
 
 request_cpus = 1
@@ -27,14 +29,16 @@ x509userproxy = $(X509UP)
 
 +JobFlavour = "tomorrow"
 
-Log        = log/job.log_$(Cluster)
-Output     = log/job.out_$(Cluster)-overwritten
-Error      = log/job.err_$(Cluster)-overwritten
+Log        = log/job.log_resubmit_missing_$(Cluster)
+Output     = log/job.out_resubmit_missing_$(Cluster)-$(OUTPROC)
+Error      = log/job.err_resubmit_missing_$(Cluster)-$(OUTPROC)
 
 should_transfer_files   = YES
 when_to_transfer_output = ON_EXIT_OR_EVICT
 transfer_input_files    = $(WRAPPER), $(X509UP), $(PROG)
 transfer_output_files   = dummy.cc
 
-# same mass-point granularity as the other high-mass granular HH trainings
-Queue JOBNUM from seq 1 4000 |
+# Columns in missing_jobs_19575431.txt:
+#   JOBNUM  OUTPROC
+# where JOBNUM=missing ProcId+1 for the original seed, and OUTPROC=missing ProcId for the output suffix.
+Queue JOBNUM, OUTPROC from missing_jobs_19575431.txt

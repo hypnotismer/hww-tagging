@@ -1,0 +1,29 @@
+Universe   = vanilla
+Executable = run_dnntuples_ak15.sh
+
++ProjectName="cms.org.cern"
+
+X509UP = x509up
+PROCABBR = higgs3g
+PROCNAME = BulkGravitonToHHTo6Glu_MX-600to6000_MH-15to250
+ISTRAIN  = 1
+EOSPATH = root://cceos.ihep.ac.cn//eos/ihep/cms/store/user/zkou/dnntuples/v7plus_ak15/$(PROCNAME)_infer/dnnTuples_$(Cluster)-$(Process).root
+
+Arguments = $(Infiles) $(ISTRAIN) $(EOSPATH)
+
+request_cpus = 1
+request_memory = 1024
+x509userproxy = $(X509UP)
+
++JobFlavour = "tomorrow"
+
+Log        = log/job.log_$(Cluster)
+Output     = log/job.out_$(Cluster)-overwritten
+Error      = log/job.err_$(Cluster)-overwritten
+
+should_transfer_files   = YES
+when_to_transfer_output = ON_EXIT_OR_EVICT
+transfer_output_files   = dummy.cc
+
+
+Queue Infiles from samples/mc_2017_$(PROCABBR)_filelist.txt

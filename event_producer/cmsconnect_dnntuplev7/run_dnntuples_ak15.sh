@@ -30,7 +30,7 @@ bash install_onnxruntime.sh
 rm -f install_onnxruntime.sh
 
 # clone this repo into "DeepNTuples" directory
-git clone git@github.com:hypnotismer/DNNTuples.git DeepNTuples -b dev-UL-hww
+git clone git@github.com:hypnotismer/DNNTuples.git DeepNTuples -b dev-UL-v10-finetune-xggg
 
 scram b -j8
 
@@ -59,7 +59,7 @@ IFS=',' read -ra ADDR <<< "$INPUTFILES"
 idx=0
 for infile in "${ADDR[@]}"; do
   echo $infile $idx
-  retry cmsRun DeepNtuplizerAK15.py inputFiles=${infile} isTrainSample=${ISTRAIN} keepAllEvents=0 isTTBarSample=1
+  retry cmsRun DeepNtuplizerAK15.py inputFiles=${infile} isTrainSample=${ISTRAIN} keepAllEvents=0
   mv output.root dnntuple_raw${idx}.root
   idx=$(($idx+1))
 done

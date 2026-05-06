@@ -1,0 +1,7 @@
+#!/bin/bash
+
+set -e
+SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+OUT="${SCRIPT_DIR}/x509up"
+
+exec voms-proxy-init -voms cms -valid 192:00 -out "${OUT}"

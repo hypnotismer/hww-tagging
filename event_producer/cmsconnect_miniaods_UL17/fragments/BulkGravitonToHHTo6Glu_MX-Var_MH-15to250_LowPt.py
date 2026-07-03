@@ -80,3 +80,10 @@ for mh in low_m_higgs:
     for mx in mres_lowpt_points(mh, n=len(low_m_res)):
         print('BulkGravitonToHH_MX%.0f_MH%.0f weight %.4f' % (mx, mh, weight))
         generator.RandomizedParameters.append(pset(mx, mh, weight))
+
+# append high-mass low-pT points
+for mh in m_higgs:
+    weight = mh_weight(mh)
+    for mx in mres_lowpt_points(mh, n=len(low_m_res)):
+        print('BulkGravitonToHH_MX%.0f_MH%.0f weight %.5f' % (mx, mh, weight))
+        generator.RandomizedParameters.append(pset(mx, mh, weight))

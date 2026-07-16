@@ -4,10 +4,10 @@ Executable = run_dnntuples_ak15.sh
 +ProjectName="cms.org.cern"
 
 X509UP = x509up
-PROCABBR = qcd
-PROCNAME = QCD_Pt_170toInf_ptBinned_TuneCP5_13TeV_pythia8
-ISTRAIN  = 1
-EOSPATH = root://cceos.ihep.ac.cn//eos/ihep/cms/store/user/zkou/dnntuples/v7plus_ak15/$(PROCNAME)/dnnTuples_$(Cluster)-$(Process).root
+PROCABBR = WZR3g_M50
+PROCNAME = WZR_012j_NLO_WToLNu_ZRTo3Glu_M-50_13TeV-pythia8
+ISTRAIN  = 0
+EOSPATH = root://cceos.ihep.ac.cn//eos/ihep/cms/store/user/zkou/dnntuples/v7plus_ak15/$(PROCNAME)_infer/dnnTuples_$(Cluster)-$(Process).root
 
 Arguments = $(Infiles) $(ISTRAIN) $(EOSPATH)
 
@@ -26,4 +26,4 @@ when_to_transfer_output = ON_EXIT_OR_EVICT
 transfer_output_files   = dummy.cc
 
 
-Queue Infiles from samples/mc_2017_$(PROCABBR)_filelist.txt
+Queue Infiles from samples/mc_2018_$(PROCABBR)_filelist.txt

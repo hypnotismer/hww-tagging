@@ -4,8 +4,8 @@ Executable = run_dnntuples_ak15.sh
 +ProjectName="cms.org.cern"
 
 X509UP = x509up
-PROCABBR = qcd
-PROCNAME = QCD_Pt_170toInf_ptBinned_TuneCP5_13TeV_pythia8
+PROCABBR = higgs3ghm
+PROCNAME = BulkGravitonToHHTo6Glu_MX-Var_MH-260to650
 ISTRAIN  = 1
 EOSPATH = root://cceos.ihep.ac.cn//eos/ihep/cms/store/user/zkou/dnntuples/v7plus_ak15/$(PROCNAME)/dnnTuples_$(Cluster)-$(Process).root
 

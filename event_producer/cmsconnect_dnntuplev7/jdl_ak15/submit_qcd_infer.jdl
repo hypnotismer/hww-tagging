@@ -1,13 +1,13 @@
 Universe   = vanilla
-Executable = run_dnntuples_ak15.sh
+Executable = run_dnntuples_ak15_infer_mod7.sh
 
 +ProjectName="cms.org.cern"
 
 X509UP = x509up
 PROCABBR = qcd
 PROCNAME = QCD_Pt_170toInf_ptBinned_TuneCP5_13TeV_pythia8
-ISTRAIN  = 1
-EOSPATH = root://cceos.ihep.ac.cn//eos/ihep/cms/store/user/zkou/dnntuples/v7plus_ak15/$(PROCNAME)/dnnTuples_$(Cluster)-$(Process).root
+ISTRAIN  = 0
+EOSPATH = root://cceos.ihep.ac.cn//eos/ihep/cms/store/user/zkou/dnntuples/v7plus_ak15/$(PROCNAME)_infer/dnnTuples_$(Cluster)-$(Process).root
 
 Arguments = $(Infiles) $(ISTRAIN) $(EOSPATH)
 
@@ -18,8 +18,8 @@ x509userproxy = $(X509UP)
 +JobFlavour = "tomorrow"
 
 Log        = log/job.log_$(Cluster)
-Output     = log/job.out_$(Cluster)-overwritten
-Error      = log/job.err_$(Cluster)-overwritten
+Output     = log/job.out_$(Cluster)-$(Process)
+Error      = log/job.err_$(Cluster)-$(Process)
 
 should_transfer_files   = YES
 when_to_transfer_output = ON_EXIT_OR_EVICT
